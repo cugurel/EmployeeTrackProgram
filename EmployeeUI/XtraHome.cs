@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using Business.Abstract;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,14 @@ namespace EmployeeUI
 {
     public partial class XtraHome : DevExpress.XtraEditors.XtraForm
     {
-        public XtraHome()
+        private readonly IDepartmentService _departmantService;
+
+        public XtraHome(IDepartmentService departmantService)
         {
             InitializeComponent();
+            _departmantService = departmantService;
         }
+
 
         private void btnClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -24,14 +29,19 @@ namespace EmployeeUI
         }
 
 
-        
+
         private void btnDepartment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             XtraDepartment department;
-            department = new XtraDepartment();
+            department = new XtraDepartment(_departmantService);
             department.MdiParent = this;
             department.Show();
-            
+
+        }
+
+        private void XtraHome_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

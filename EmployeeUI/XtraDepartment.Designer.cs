@@ -172,6 +172,7 @@
             Controls.Add(layoutControl1);
             Name = "XtraDepartment";
             Text = "Departmanlar";
+            Load += XtraDepartment_Load;
             ((System.ComponentModel.ISupportInitialize)layoutControl1).EndInit();
             layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();

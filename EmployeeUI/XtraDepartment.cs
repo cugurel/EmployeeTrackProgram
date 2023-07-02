@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using Business.Abstract;
+using DataAccess.Concrete.EntityFramework.Context;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +15,24 @@ namespace EmployeeUI
 {
     public partial class XtraDepartment : DevExpress.XtraEditors.XtraForm
     {
-        public XtraDepartment()
+        private readonly IDepartmentService _departmentService;
+
+        public XtraDepartment(IDepartmentService departmentService)
         {
             InitializeComponent();
+            _departmentService = departmentService;
         }
+
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void XtraDepartment_Load(object sender, EventArgs e)
+        {
+            var result = _departmentService.GetList();
+            gridControl1.DataSource = result;
         }
     }
 }

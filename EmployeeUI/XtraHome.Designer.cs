@@ -33,10 +33,10 @@
             ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             btnEmployee = new DevExpress.XtraBars.BarButtonItem();
             btnClose = new DevExpress.XtraBars.BarButtonItem();
+            btnDepartment = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            btnDepartment = new DevExpress.XtraBars.BarButtonItem();
             xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(components);
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)xtraTabbedMdiManager1).BeginInit();
@@ -69,6 +69,15 @@
             btnClose.Name = "btnClose";
             btnClose.ItemClick += btnClose_ItemClick;
             // 
+            // btnDepartment
+            // 
+            btnDepartment.Caption = "Personel Bölümleri";
+            btnDepartment.Id = 3;
+            btnDepartment.ImageOptions.Image = (Image)resources.GetObject("btnDepartment.ImageOptions.Image");
+            btnDepartment.ImageOptions.LargeImage = (Image)resources.GetObject("btnDepartment.ImageOptions.LargeImage");
+            btnDepartment.Name = "btnDepartment";
+            btnDepartment.ItemClick += btnDepartment_ItemClick;
+            // 
             // ribbonPage1
             // 
             ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2 });
@@ -88,15 +97,6 @@
             ribbonPageGroup2.Name = "ribbonPageGroup2";
             ribbonPageGroup2.Text = "Kapat";
             // 
-            // btnDepartment
-            // 
-            btnDepartment.Caption = "Personel Bölümleri";
-            btnDepartment.Id = 3;
-            btnDepartment.ImageOptions.Image = (Image)resources.GetObject("barButtonItem1.ImageOptions.Image");
-            btnDepartment.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem1.ImageOptions.LargeImage");
-            btnDepartment.Name = "btnDepartment";
-            btnDepartment.ItemClick += btnDepartment_ItemClick;
-            // 
             // xtraTabbedMdiManager1
             // 
             xtraTabbedMdiManager1.MdiParent = this;
@@ -111,6 +111,7 @@
             Name = "XtraHome";
             Text = "XtraHome";
             WindowState = FormWindowState.Maximized;
+            Load += XtraHome_Load;
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)xtraTabbedMdiManager1).EndInit();
             ResumeLayout(false);
