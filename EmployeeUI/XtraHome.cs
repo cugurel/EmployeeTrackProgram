@@ -17,5 +17,21 @@ namespace EmployeeUI
         {
             InitializeComponent();
         }
+
+        private void btnClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
+
+        
+        private void btnDepartment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraDepartment department;
+            department = new XtraDepartment();
+            department.MdiParent = this;
+            department.Show();
+            
+        }
     }
 }
