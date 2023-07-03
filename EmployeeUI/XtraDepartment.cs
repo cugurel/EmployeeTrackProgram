@@ -18,6 +18,8 @@ namespace EmployeeUI
     {
         private readonly IDepartmentService _departmentService;
 
+        int _id;
+
         public XtraDepartment(IDepartmentService departmentService)
         {
             InitializeComponent();
@@ -27,7 +29,15 @@ namespace EmployeeUI
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if(btnClose.Text == "Vazgeç")
+            {
+                Clear();
+            }
+            else
+            {
+                this.Close();
+            }
+            
         }
 
         private void XtraDepartment_Load(object sender, EventArgs e)
@@ -42,35 +52,71 @@ namespace EmployeeUI
             gridControl1.DataSource = result;
         }
 
+        void Clear()
+        {
+            txtDepartmentName.Text = "";
+            btnClose.Text = "Kapat";
+            btnSave.Text = "Kaydet";
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Department department = new Department
+            //Güncelleme işlemi
+            if (btnSave.Text == "Güncelle")
             {
-                Name = txtDepartmentName.Text,
-                Status = true
-            };
+                var finddepartment = _departmentService.Get(_id);
+                finddepartment.Name = txtDepartmentName.Text;
+                var result = _departmentService.Update(finddepartment);
 
-            var result = _departmentService.Add(department);
-            if (result)
-            {
-                MessageBox.Show("Departman başarıyla eklendi", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                GetList();
+                if (result)
+                {
+                    XtraMessageBox.Show("Güncelleme işlemi başarıyla gerçekleşti", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GetList();
+                    Clear();
+                    
+                }
             }
             else
             {
-                MessageBox.Show("Hatalı ekleme", "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Department department = new Department
+                {
+                    Name = txtDepartmentName.Text,
+                    Status = true
+                };
+
+                var result = _departmentService.Add(department);
+                if (result)
+                {
+                    MessageBox.Show("Departman başarıyla eklendi", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GetList();
+                }
+                else
+                {
+                    MessageBox.Show("Hatalı ekleme", "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+            
         }
 
         private void repositoryBtnDelete_Click(object sender, EventArgs e)
         {
-            if(XtraMessageBox.Show($"{(gridView1.GetFocusedRow() as Department).Name}Silmek istiyor musunuz", "Sil?", 
+            if (XtraMessageBox.Show($"{(gridView1.GetFocusedRow() as Department).Name}Silmek istiyor musunuz", "Sil?",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 var department = (gridView1.GetFocusedRow() as Department);
                 _departmentService.Delete(department);
                 GetList();
             }
+        }
+
+        private void reposiitoryBtnEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            _id = (gridView1.GetFocusedRow() as Department).Id;
+            string name = (gridView1.GetFocusedRow() as Department).Name;
+            txtDepartmentName.Text = name;
+
+            btnSave.Text = "Güncelle";
+            btnClose.Text = "Vazgeç";
         }
     }
 }

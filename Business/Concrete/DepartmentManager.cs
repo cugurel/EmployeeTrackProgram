@@ -1,11 +1,6 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
@@ -27,6 +22,7 @@ namespace Business.Concrete
         public void Delete(Department department)
         {
             _departmentDal.Delete(department);
+            
         }
 
         public Department Get(int id)
@@ -39,9 +35,10 @@ namespace Business.Concrete
             return _departmentDal.GetList();
         }
 
-        public void Update(Department department)
+        public bool Update(Department department)
         {
-            throw new NotImplementedException();
+            _departmentDal.Update(department);
+            return true;
         }
     }
 }

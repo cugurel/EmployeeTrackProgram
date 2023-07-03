@@ -49,7 +49,11 @@ namespace DataAccess.Concrete.EntityFramework
 
         public void Update(Department department)
         {
-            throw new NotImplementedException();
+            using (var context = new EmployeeDbContext())
+            {
+                context.Departments.Update(department);
+                context.SaveChanges();
+            }
         }
     }
 }
