@@ -34,6 +34,11 @@
             btnSave = new DevExpress.XtraEditors.SimpleButton();
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            colName = new DevExpress.XtraGrid.Columns.GridColumn();
+            colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            colDelete = new DevExpress.XtraGrid.Columns.GridColumn();
+            repositoryBtnDelete = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             txtDepartmentName = new DevExpress.XtraEditors.TextEdit();
             Root = new DevExpress.XtraLayout.LayoutControlGroup();
             layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -45,6 +50,7 @@
             layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryBtnDelete).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtDepartmentName.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Root).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem1).BeginInit();
@@ -88,20 +94,72 @@
             btnSave.StyleController = layoutControl1;
             btnSave.TabIndex = 6;
             btnSave.Text = "Kaydet";
+            btnSave.Click += btnSave_Click;
             // 
             // gridControl1
             // 
             gridControl1.Location = new Point(12, 128);
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
+            gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryBtnDelete });
             gridControl1.Size = new Size(770, 439);
             gridControl1.TabIndex = 5;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
             // gridView1
             // 
+            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colName, colStatus, colDelete });
             gridView1.GridControl = gridControl1;
             gridView1.Name = "gridView1";
+            // 
+            // colId
+            // 
+            colId.Caption = "Id";
+            colId.CustomizationCaption = "#";
+            colId.FieldName = "Id";
+            colId.MinWidth = 25;
+            colId.Name = "colId";
+            colId.Visible = true;
+            colId.VisibleIndex = 0;
+            colId.Width = 94;
+            // 
+            // colName
+            // 
+            colName.Caption = "Departman Adı";
+            colName.FieldName = "Name";
+            colName.MinWidth = 25;
+            colName.Name = "colName";
+            colName.Visible = true;
+            colName.VisibleIndex = 1;
+            colName.Width = 94;
+            // 
+            // colStatus
+            // 
+            colStatus.Caption = "Durum";
+            colStatus.FieldName = "Status";
+            colStatus.MinWidth = 25;
+            colStatus.Name = "colStatus";
+            colStatus.Visible = true;
+            colStatus.VisibleIndex = 2;
+            colStatus.Width = 94;
+            // 
+            // colDelete
+            // 
+            colDelete.Caption = "Sil";
+            colDelete.ColumnEdit = repositoryBtnDelete;
+            colDelete.MinWidth = 25;
+            colDelete.Name = "colDelete";
+            colDelete.Visible = true;
+            colDelete.VisibleIndex = 3;
+            colDelete.Width = 94;
+            // 
+            // repositoryBtnDelete
+            // 
+            repositoryBtnDelete.AutoHeight = false;
+            repositoryBtnDelete.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete) });
+            repositoryBtnDelete.Name = "repositoryBtnDelete";
+            repositoryBtnDelete.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            repositoryBtnDelete.Click += repositoryBtnDelete_Click;
             // 
             // txtDepartmentName
             // 
@@ -177,6 +235,7 @@
             layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryBtnDelete).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtDepartmentName.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)Root).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem1).EndInit();
@@ -201,5 +260,10 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colName;
+        private DevExpress.XtraGrid.Columns.GridColumn colStatus;
+        private DevExpress.XtraGrid.Columns.GridColumn colDelete;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryBtnDelete;
     }
 }

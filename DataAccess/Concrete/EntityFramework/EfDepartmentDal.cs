@@ -11,6 +11,33 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfDepartmentDal : IDepartmentDal
     {
+        public void Add(Department department)
+        {
+            using (var context = new EmployeeDbContext())
+            {
+                var result = context.Departments.Add(department);
+                context.SaveChanges();
+            }
+        }
+
+        public void Delete(Department department)
+        {
+            using (var context = new EmployeeDbContext())
+            {
+                var result = context.Departments.Remove(department);
+                context.SaveChanges();
+            }
+        }
+
+        public Department Get(int id)
+        {
+            using (var context = new EmployeeDbContext())
+            {
+                var result = context.Departments.Where(c=>c.Id == id).FirstOrDefault();
+                return result;
+            }
+        }
+
         public List<Department> GetList()
         {
             using (var context = new EmployeeDbContext())
@@ -18,6 +45,11 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = context.Departments.ToList();
                 return result;
             }
+        }
+
+        public void Update(Department department)
+        {
+            throw new NotImplementedException();
         }
     }
 }

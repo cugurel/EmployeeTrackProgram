@@ -9,6 +9,10 @@ namespace DataAccess.Abstract
 {
     public interface IDepartmentDal
     {
+        void Add(Department department);
+        void Delete(Department department);
+        void Update(Department department);
+        Department Get(int id);
         List<Department> GetList();
     }
 }
