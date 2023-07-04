@@ -77,7 +77,6 @@ namespace EmployeeUI
                 var result = _departmentService.Add(department);
                 if (result)
                 {
-                    XtraMessageBox.Show("Departman başarıyla eklendi", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GetList();
                 }
                 else

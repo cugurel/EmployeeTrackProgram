@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.Validation.FluentValidation;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using FluentValidation.Results;
 
 namespace Business.Concrete
 {
@@ -15,10 +17,23 @@ namespace Business.Concrete
 
         public bool Add(Department department)
         {
-            _departmentDal.Add(department);
-            MessageBox.Show("Kaydetme işlemi başarıyla gerçekleşti", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            return true;
+            DepartmentValidator validationRules = new DepartmentValidator();
+            ValidationResult validationResult = validationRules.Validate(department);
+            IList<ValidationFailure> failures = validationResult.Errors;
+            if (!validationResult.IsValid)
+            {
+                foreach (ValidationFailure failure in failures)
+                {
+                    MessageBox.Show(failure.ErrorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return false;
+            }
+            else
+            {
+                _departmentDal.Add(department);
+                MessageBox.Show("Kaydetme işlemi başarıyla gerçekleşti", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
         }
 
         public void Delete(Department department)
@@ -39,9 +54,24 @@ namespace Business.Concrete
 
         public bool Update(Department department)
         {
-            _departmentDal.Update(department);
-            MessageBox.Show("Güncelleme işlemi başarıyla gerçekleşti", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return true;
+            DepartmentValidator validationRules = new DepartmentValidator();
+            ValidationResult validationResult = validationRules.Validate(department);
+            IList<ValidationFailure> failures = validationResult.Errors;
+            if (!validationResult.IsValid)
+            {
+                foreach (ValidationFailure failure in failures)
+                {
+                    MessageBox.Show(failure.ErrorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return false;
+            }
+            else
+            {
+                _departmentDal.Update(department);
+                MessageBox.Show("Güncelleme işlemi başarıyla gerçekleşti", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            
         }
     }
 }
