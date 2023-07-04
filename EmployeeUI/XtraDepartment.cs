@@ -1,16 +1,6 @@
-﻿using Business.Abstract;
-using DataAccess.Concrete.EntityFramework.Context;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using BusinessLayer.Abstract;
 
 namespace EmployeeUI
 {
@@ -87,7 +77,7 @@ namespace EmployeeUI
                 var result = _departmentService.Add(department);
                 if (result)
                 {
-                    MessageBox.Show("Departman başarıyla eklendi", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Departman başarıyla eklendi", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GetList();
                 }
                 else

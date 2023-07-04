@@ -1,4 +1,4 @@
-﻿using Business.Abstract;
+﻿using BusinessLayer.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -16,6 +16,8 @@ namespace Business.Concrete
         public bool Add(Department department)
         {
             _departmentDal.Add(department);
+            MessageBox.Show("Kaydetme işlemi başarıyla gerçekleşti", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             return true;
         }
 
@@ -38,6 +40,7 @@ namespace Business.Concrete
         public bool Update(Department department)
         {
             _departmentDal.Update(department);
+            MessageBox.Show("Güncelleme işlemi başarıyla gerçekleşti", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return true;
         }
     }
