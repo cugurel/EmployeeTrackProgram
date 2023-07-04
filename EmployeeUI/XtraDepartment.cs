@@ -60,7 +60,6 @@ namespace EmployeeUI
 
                 if (result)
                 {
-                    XtraMessageBox.Show("Güncelleme işlemi başarıyla gerçekleşti", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GetList();
                     Clear();
                     
@@ -78,11 +77,9 @@ namespace EmployeeUI
                 if (result)
                 {
                     GetList();
+                    Clear();
                 }
-                else
-                {
-                    MessageBox.Show("Hatalı ekleme", "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                
             }
             
         }
