@@ -3,7 +3,7 @@ using BusinessLayer.Validation.FluentValidation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using FluentValidation.Results;
-using Core.CrossCuttingConcerns;
+using Core.CrossCuttingConcerns.Validation;
 
 namespace Business.Concrete
 {

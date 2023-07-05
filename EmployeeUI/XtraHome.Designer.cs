@@ -38,6 +38,7 @@
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(components);
+            btnEmployeeAdd = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)xtraTabbedMdiManager1).BeginInit();
             SuspendLayout();
@@ -45,9 +46,9 @@
             // ribbonControl1
             // 
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, btnEmployee, btnClose, btnDepartment });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, btnEmployee, btnClose, btnDepartment, btnEmployeeAdd });
             ribbonControl1.Location = new Point(0, 0);
-            ribbonControl1.MaxItemId = 4;
+            ribbonControl1.MaxItemId = 5;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1 });
             ribbonControl1.Size = new Size(1181, 183);
@@ -88,6 +89,7 @@
             // 
             ribbonPageGroup1.ItemLinks.Add(btnEmployee);
             ribbonPageGroup1.ItemLinks.Add(btnDepartment);
+            ribbonPageGroup1.ItemLinks.Add(btnEmployeeAdd);
             ribbonPageGroup1.Name = "ribbonPageGroup1";
             ribbonPageGroup1.Text = "Kayıt";
             // 
@@ -100,6 +102,15 @@
             // xtraTabbedMdiManager1
             // 
             xtraTabbedMdiManager1.MdiParent = this;
+            // 
+            // btnEmployeeAdd
+            // 
+            btnEmployeeAdd.Caption = "Personel Ekle";
+            btnEmployeeAdd.Id = 4;
+            btnEmployeeAdd.ImageOptions.Image = (Image)resources.GetObject("barButtonItem1.ImageOptions.Image");
+            btnEmployeeAdd.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem1.ImageOptions.LargeImage");
+            btnEmployeeAdd.Name = "btnEmployeeAdd";
+            btnEmployeeAdd.ItemClick += btnEmployeeAdd_ItemClick;
             // 
             // XtraHome
             // 
@@ -128,5 +139,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarButtonItem btnDepartment;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
+        private DevExpress.XtraBars.BarButtonItem btnEmployeeAdd;
     }
 }

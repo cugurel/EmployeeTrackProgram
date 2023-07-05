@@ -33,5 +33,13 @@ namespace EmployeeUI
         {
 
         }
+
+        private void btnEmployeeAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraEmployee employee;
+            employee = new XtraEmployee();
+            employee.MdiParent = this;
+            employee.Show();
+        }
     }
 }
