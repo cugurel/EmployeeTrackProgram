@@ -24,17 +24,7 @@ namespace Core.CrossCuttingConcerns.Validation
             }
             return true;
 
-            //DepartmentValidator validationRules = new DepartmentValidator();
-            //ValidationResult validationResult = validationRules.Validate(department);
-            //IList<ValidationFailure> failures = validationResult.Errors;
-            //if (!validationResult.IsValid)
-            //{
-            //    foreach (ValidationFailure failure in failures)
-            //    {
-            //        MessageBox.Show(failure.ErrorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //    return false;
-            //}
+            
         }
     }
 }

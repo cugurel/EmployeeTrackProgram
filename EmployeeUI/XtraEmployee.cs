@@ -65,12 +65,13 @@ namespace EmployeeUI
                 LastName = txtLastname.Text,
                 Name = txtName.Text,
                 Salary = Convert.ToDecimal(txtSalary.Text),
-                StartingDate = Convert.ToDateTime(txtStartDate.Text)
-                
+                StartingDate = Convert.ToDateTime(txtStartDate.Text),
+                IdentityNumber = txtIdentity.Text,
+                Status = "Çalışıyor"
             };
 
             var result = _employeeService.Add(employee);
-            if(result)
+            if (result)
             {
 
             }

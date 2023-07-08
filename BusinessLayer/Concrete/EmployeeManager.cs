@@ -26,11 +26,22 @@ namespace BusinessLayer.Concrete
             bool validation = ValidationTool.Validate(new EmployeeValidator(), employee);
             if (validation)
             {
+                var result = _employeeDal.GetAll().Where(t => t.IdentityNumber == employee.IdentityNumber);
+                if (result.Count() > 0)
+                {
+                    MessageBox.Show("Bu kimlik numarası ile bir çalışan kayıtlı", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
                 _employeeDal.Add(employee);
                 MessageBox.Show("Kaydetme işlemi başarıyla gerçekleşti", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             return false;
+        }
+
+        public List<Employee> GetAll()
+        {
+            return _employeeDal.GetAll();
         }
     }
 }

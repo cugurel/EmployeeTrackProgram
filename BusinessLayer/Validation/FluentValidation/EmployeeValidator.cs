@@ -15,6 +15,7 @@ namespace BusinessLayer.Validation.FluentValidation
             RuleFor(r => r.Name).NotEmpty().WithMessage("Personel adı boş olamaz");
             RuleFor(r => r.Name).MinimumLength(3).WithMessage("Personel adı en az 3 karakter olmalıdır");
             RuleFor(r => r.Name).MaximumLength(25).WithMessage("Personel adı en fazla 10 karakter olmalıdır");
+            
         }
     }
 }

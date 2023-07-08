@@ -19,5 +19,14 @@ namespace DataAccess.Concrete.EntityFramework
                 context.SaveChanges();
             }
         }
+
+        public List<Employee> GetAll()
+        {
+            using (var context = new EmployeeDbContext())
+            {
+                var result = context.Employees.ToList();
+                return result;
+            }
+        }
     }
 }

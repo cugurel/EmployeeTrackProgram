@@ -31,8 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraEmployee));
             layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            lblDepartmentId = new DevExpress.XtraEditors.LabelControl();
-            txtDepartment = new DevExpress.XtraEditors.ComboBoxEdit();
+            txtIdentity = new DevExpress.XtraEditors.TextEdit();
             barManager1 = new DevExpress.XtraBars.BarManager(components);
             bar2 = new DevExpress.XtraBars.Bar();
             btnClose = new DevExpress.XtraBars.BarButtonItem();
@@ -42,6 +41,7 @@
             barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            txtDepartment = new DevExpress.XtraEditors.ComboBoxEdit();
             txtStartDate = new DevExpress.XtraEditors.DateEdit();
             txtSalary = new DevExpress.XtraEditors.TextEdit();
             txtBirthDate = new DevExpress.XtraEditors.DateEdit();
@@ -58,8 +58,9 @@
             layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)layoutControl1).BeginInit();
             layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)txtDepartment.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtIdentity.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)barManager1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtDepartment.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtStartDate.Properties.CalendarTimeProperties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtStartDate.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtSalary.Properties).BeginInit();
@@ -80,7 +81,7 @@
             // 
             // layoutControl1
             // 
-            layoutControl1.Controls.Add(lblDepartmentId);
+            layoutControl1.Controls.Add(txtIdentity);
             layoutControl1.Controls.Add(txtDepartment);
             layoutControl1.Controls.Add(txtStartDate);
             layoutControl1.Controls.Add(txtSalary);
@@ -95,27 +96,15 @@
             layoutControl1.TabIndex = 0;
             layoutControl1.Text = "layoutControl1";
             // 
-            // lblDepartmentId
+            // txtIdentity
             // 
-            lblDepartmentId.Appearance.ForeColor = Color.Transparent;
-            lblDepartmentId.Appearance.Options.UseForeColor = true;
-            lblDepartmentId.Location = new Point(12, 168);
-            lblDepartmentId.Name = "lblDepartmentId";
-            lblDepartmentId.Size = new Size(1070, 16);
-            lblDepartmentId.StyleController = layoutControl1;
-            lblDepartmentId.TabIndex = 10;
-            // 
-            // txtDepartment
-            // 
-            txtDepartment.Location = new Point(130, 142);
-            txtDepartment.MenuManager = barManager1;
-            txtDepartment.Name = "txtDepartment";
-            txtDepartment.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            txtDepartment.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            txtDepartment.Size = new Size(952, 22);
-            txtDepartment.StyleController = layoutControl1;
-            txtDepartment.TabIndex = 9;
-            txtDepartment.SelectedIndexChanged += txtDepartment_SelectedIndexChanged;
+            txtIdentity.Location = new Point(130, 168);
+            txtIdentity.MenuManager = barManager1;
+            txtIdentity.Name = "txtIdentity";
+            txtIdentity.Properties.MaxLength = 11;
+            txtIdentity.Size = new Size(952, 22);
+            txtIdentity.StyleController = layoutControl1;
+            txtIdentity.TabIndex = 10;
             // 
             // barManager1
             // 
@@ -205,6 +194,18 @@
             barDockControlRight.Manager = barManager1;
             barDockControlRight.Size = new Size(0, 621);
             // 
+            // txtDepartment
+            // 
+            txtDepartment.Location = new Point(130, 142);
+            txtDepartment.MenuManager = barManager1;
+            txtDepartment.Name = "txtDepartment";
+            txtDepartment.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            txtDepartment.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            txtDepartment.Size = new Size(952, 22);
+            txtDepartment.StyleController = layoutControl1;
+            txtDepartment.TabIndex = 9;
+            txtDepartment.SelectedIndexChanged += txtDepartment_SelectedIndexChanged;
+            // 
             // txtStartDate
             // 
             txtStartDate.EditValue = null;
@@ -272,9 +273,9 @@
             // emptySpaceItem1
             // 
             emptySpaceItem1.AllowHotTrack = false;
-            emptySpaceItem1.Location = new Point(0, 176);
+            emptySpaceItem1.Location = new Point(0, 182);
             emptySpaceItem1.Name = "emptySpaceItem1";
-            emptySpaceItem1.Size = new Size(1074, 425);
+            emptySpaceItem1.Size = new Size(1074, 419);
             emptySpaceItem1.TextSize = new Size(0, 0);
             // 
             // layoutControlItem1
@@ -334,12 +335,12 @@
             // 
             // layoutControlItem7
             // 
-            layoutControlItem7.Control = lblDepartmentId;
+            layoutControlItem7.Control = txtIdentity;
             layoutControlItem7.Location = new Point(0, 156);
             layoutControlItem7.Name = "layoutControlItem7";
-            layoutControlItem7.Size = new Size(1074, 20);
-            layoutControlItem7.TextSize = new Size(0, 0);
-            layoutControlItem7.TextVisible = false;
+            layoutControlItem7.Size = new Size(1074, 26);
+            layoutControlItem7.Text = "T.C.";
+            layoutControlItem7.TextSize = new Size(106, 16);
             // 
             // XtraEmployee
             // 
@@ -357,8 +358,9 @@
             Load += XtraEmployee_Load;
             ((System.ComponentModel.ISupportInitialize)layoutControl1).EndInit();
             layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)txtDepartment.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtIdentity.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)barManager1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtDepartment.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtStartDate.Properties.CalendarTimeProperties).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtStartDate.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtSalary.Properties).EndInit();
@@ -404,8 +406,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraEditors.LabelControl lblDepartmentId;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraBars.BarButtonItem btnAdd;
+        private DevExpress.XtraEditors.TextEdit txtIdentity;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }
