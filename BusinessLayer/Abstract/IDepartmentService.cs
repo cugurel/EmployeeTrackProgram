@@ -14,6 +14,7 @@ namespace BusinessLayer.Abstract
         bool Update(Department department);
         void Delete(Department department);
         Department Get(int id);
+        int GetDepartmentId(string departmentName);
         List<Department> GetList();
     }
 }
