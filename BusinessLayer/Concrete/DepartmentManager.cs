@@ -4,6 +4,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using FluentValidation.Results;
 using Core.CrossCuttingConcerns.Validation;
+using Entities.Concrete.Dtos;
 
 namespace Business.Concrete
 {
@@ -30,8 +31,15 @@ namespace Business.Concrete
 
         public void Delete(Department department)
         {
-            _departmentDal.Delete(department);
-
+            var result = _departmentDal.CheckDepartmentInUse(department.Id);
+            if (result)
+            {
+                MessageBox.Show("Bu bölüme atanmış personel mevcut","Hata!",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                _departmentDal.Delete(department);
+            }
         }
 
         public int GetDepartmentId(string departmentName)
@@ -59,6 +67,13 @@ namespace Business.Concrete
                 return true;
             }
             return false;
+        }
+
+        public void StatusChange(Department department)
+        {
+            _departmentDal.StatusChange(department);
+            MessageBox.Show("Güncelleme işlemi başarıyla gerçekleşti", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
     }
 }

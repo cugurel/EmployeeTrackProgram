@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities.Concrete;
-
+using Entities.Concrete.Dtos;
 
 namespace BusinessLayer.Abstract
 {
@@ -12,6 +12,7 @@ namespace BusinessLayer.Abstract
     {
         bool Add(Department department);
         bool Update(Department department);
+        void StatusChange(Department department);
         void Delete(Department department);
         Department Get(int id);
         int GetDepartmentId(string departmentName);

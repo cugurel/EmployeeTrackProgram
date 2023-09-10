@@ -20,6 +20,15 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
+        public int CheckIdentityNumber(string identity)
+        {
+            using (var context = new EmployeeDbContext())
+            {
+                var result = context.Employees.Where(e=>e.IdentityNumber == identity);
+                return result.Count();
+            }
+        }
+
         public List<Employee> GetAll()
         {
             using (var context = new EmployeeDbContext())

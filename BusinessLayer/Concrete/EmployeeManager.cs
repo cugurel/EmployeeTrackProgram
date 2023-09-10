@@ -26,8 +26,8 @@ namespace BusinessLayer.Concrete
             bool validation = ValidationTool.Validate(new EmployeeValidator(), employee);
             if (validation)
             {
-                var result = _employeeDal.GetAll().Where(t => t.IdentityNumber == employee.IdentityNumber);
-                if (result.Count() > 0)
+                var result = _employeeDal.CheckIdentityNumber(employee.IdentityNumber);
+                if (result > 0)
                 {
                     MessageBox.Show("Bu kimlik numarası ile bir çalışan kayıtlı", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;

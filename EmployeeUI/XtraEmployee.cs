@@ -29,7 +29,7 @@ namespace EmployeeUI
 
         private void XtraEmployee_Load(object sender, EventArgs e)
         {
-            var departments = _departmentService.GetList();
+            var departments = _departmentService.GetList().Where(x=>x.Status == true);
 
             foreach (var department in departments)
             {

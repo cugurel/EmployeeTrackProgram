@@ -37,8 +37,12 @@
             colId = new DevExpress.XtraGrid.Columns.GridColumn();
             colName = new DevExpress.XtraGrid.Columns.GridColumn();
             colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            reposiitoryBtnEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             colDelete = new DevExpress.XtraGrid.Columns.GridColumn();
             repositoryBtnDelete = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            colStatusChange = new DevExpress.XtraGrid.Columns.GridColumn();
+            repositorybtnStatusChange = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             txtDepartmentName = new DevExpress.XtraEditors.TextEdit();
             Root = new DevExpress.XtraLayout.LayoutControlGroup();
             layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -46,13 +50,13 @@
             layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            reposiitoryBtnEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)layoutControl1).BeginInit();
             layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)reposiitoryBtnEdit).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryBtnDelete).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositorybtnStatusChange).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtDepartmentName.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Root).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem1).BeginInit();
@@ -60,7 +64,6 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)reposiitoryBtnEdit).BeginInit();
             SuspendLayout();
             // 
             // layoutControl1
@@ -104,14 +107,14 @@
             gridControl1.Location = new Point(12, 131);
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
-            gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryBtnDelete, reposiitoryBtnEdit });
+            gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryBtnDelete, reposiitoryBtnEdit, repositorybtnStatusChange });
             gridControl1.Size = new Size(1109, 567);
             gridControl1.TabIndex = 5;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
             // gridView1
             // 
-            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colName, colStatus, gridColumn1, colDelete });
+            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colName, colStatus, gridColumn1, colDelete, colStatusChange });
             gridView1.GridControl = gridControl1;
             gridView1.Name = "gridView1";
             // 
@@ -146,6 +149,24 @@
             colStatus.VisibleIndex = 2;
             colStatus.Width = 94;
             // 
+            // gridColumn1
+            // 
+            gridColumn1.Caption = "Güncelle";
+            gridColumn1.ColumnEdit = reposiitoryBtnEdit;
+            gridColumn1.MinWidth = 25;
+            gridColumn1.Name = "gridColumn1";
+            gridColumn1.Visible = true;
+            gridColumn1.VisibleIndex = 4;
+            gridColumn1.Width = 94;
+            // 
+            // reposiitoryBtnEdit
+            // 
+            reposiitoryBtnEdit.AutoHeight = false;
+            reposiitoryBtnEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Undo) });
+            reposiitoryBtnEdit.Name = "reposiitoryBtnEdit";
+            reposiitoryBtnEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            reposiitoryBtnEdit.ButtonClick += reposiitoryBtnEdit_ButtonClick;
+            // 
             // colDelete
             // 
             colDelete.Caption = "Sil";
@@ -163,6 +184,24 @@
             repositoryBtnDelete.Name = "repositoryBtnDelete";
             repositoryBtnDelete.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             repositoryBtnDelete.Click += repositoryBtnDelete_Click;
+            // 
+            // colStatusChange
+            // 
+            colStatusChange.Caption = "Durum Değiştir";
+            colStatusChange.ColumnEdit = repositorybtnStatusChange;
+            colStatusChange.MinWidth = 25;
+            colStatusChange.Name = "colStatusChange";
+            colStatusChange.Visible = true;
+            colStatusChange.VisibleIndex = 5;
+            colStatusChange.Width = 94;
+            // 
+            // repositorybtnStatusChange
+            // 
+            repositorybtnStatusChange.AutoHeight = false;
+            repositorybtnStatusChange.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinUp) });
+            repositorybtnStatusChange.Name = "repositorybtnStatusChange";
+            repositorybtnStatusChange.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            repositorybtnStatusChange.ButtonClick += repositorybtnStatusChange_ButtonClick;
             // 
             // txtDepartmentName
             // 
@@ -225,24 +264,6 @@
             layoutControlItem4.TextSize = new Size(0, 0);
             layoutControlItem4.TextVisible = false;
             // 
-            // reposiitoryBtnEdit
-            // 
-            reposiitoryBtnEdit.AutoHeight = false;
-            reposiitoryBtnEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Undo) });
-            reposiitoryBtnEdit.Name = "reposiitoryBtnEdit";
-            reposiitoryBtnEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            reposiitoryBtnEdit.ButtonClick += reposiitoryBtnEdit_ButtonClick;
-            // 
-            // gridColumn1
-            // 
-            gridColumn1.Caption = "Güncelle";
-            gridColumn1.ColumnEdit = reposiitoryBtnEdit;
-            gridColumn1.MinWidth = 25;
-            gridColumn1.Name = "gridColumn1";
-            gridColumn1.Visible = true;
-            gridColumn1.VisibleIndex = 4;
-            gridColumn1.Width = 94;
-            // 
             // XtraDepartment
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
@@ -256,7 +277,9 @@
             layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)reposiitoryBtnEdit).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryBtnDelete).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositorybtnStatusChange).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtDepartmentName.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)Root).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem1).EndInit();
@@ -264,7 +287,6 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem3).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)reposiitoryBtnEdit).EndInit();
             ResumeLayout(false);
         }
 
@@ -289,5 +311,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryBtnDelete;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit reposiitoryBtnEdit;
+        private DevExpress.XtraGrid.Columns.GridColumn colStatusChange;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositorybtnStatusChange;
     }
 }

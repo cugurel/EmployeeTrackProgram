@@ -20,6 +20,15 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
+        public bool CheckDepartmentInUse(int departmentId)
+        {
+            using (var context = new EmployeeDbContext())
+            {
+                var result = context.Employees.Where(e=>e.DepartmentId == departmentId);
+                return (result.Count() > 0 ? true : false);
+            }
+        }
+
         public void Delete(Department department)
         {
             using (var context = new EmployeeDbContext())
@@ -44,6 +53,23 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = context.Departments.ToList();
                 return result;
+            }
+        }
+
+        public void StatusChange(Department department)
+        {
+            using (var context = new EmployeeDbContext())
+            {
+                if (department.Status)
+                {
+                    department.Status = false;
+                }
+                else
+                {
+                   department.Status=true;
+                }
+                context.Departments.Update(department);
+                context.SaveChanges();
             }
         }
 

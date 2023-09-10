@@ -19,7 +19,7 @@ namespace EmployeeUI
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if(btnClose.Text == "Vazgeç")
+            if (btnClose.Text == "Vazgeç")
             {
                 Clear();
             }
@@ -27,7 +27,7 @@ namespace EmployeeUI
             {
                 this.Close();
             }
-            
+
         }
 
         private void XtraDepartment_Load(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace EmployeeUI
                 {
                     GetList();
                     Clear();
-                    
+
                 }
             }
             else
@@ -79,9 +79,9 @@ namespace EmployeeUI
                     GetList();
                     Clear();
                 }
-                
+
             }
-            
+
         }
 
         private void repositoryBtnDelete_Click(object sender, EventArgs e)
@@ -103,6 +103,17 @@ namespace EmployeeUI
 
             btnSave.Text = "Güncelle";
             btnClose.Text = "Vazgeç";
+        }
+
+        private void repositorybtnStatusChange_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (XtraMessageBox.Show($"{(gridView1.GetFocusedRow() as Department).Name} bölümün durumunu değiştirmek istiyor musunuz", "Sil?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                var department = (gridView1.GetFocusedRow() as Department);
+                _departmentService.StatusChange(department);
+                GetList();
+            }
         }
     }
 }

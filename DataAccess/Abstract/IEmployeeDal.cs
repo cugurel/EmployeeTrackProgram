@@ -11,5 +11,6 @@ namespace DataAccess.Abstract
     {
         void Add(Employee employee);
         List<Employee> GetAll();
+        int CheckIdentityNumber(string identity);
     }
 }
